@@ -1,0 +1,2 @@
+import {jsx}from'react/jsx-runtime';var d=({label:t,onClick:e,primary:o=false})=>jsx("button",{onClick:e,className:`px-4 py-2 rounded-lg font-bold transition-colors duration-200 ${o?"bg-blue-500 text-white hover:bg-blue-600":"bg-gray-200 text-gray-800 hover:bg-gray-300"}`,children:t});export{d as Button};//# sourceMappingURL=index.mjs.map
+//# sourceMappingURL=index.mjs.map
