@@ -13,11 +13,14 @@ npm install soundmind-design-system
 yarn add soundmind-design-system
 # or
 pnpm add soundmind-design-system
-🚀 Quick Start
-1. Import CSS (Important!)
-You must import the CSS file at the root of your application (e.g., main.tsx, App.tsx, or _app.tsx) to apply styles correctly.
+```
 
-TypeScript
+🚀 Quick Start
+
+1. Import CSS (Important!)
+   You must import the CSS file at the root of your application (e.g., main.tsx, App.tsx, or \_app.tsx) to apply styles correctly.
+
+```TypeScript
 
 // src/main.tsx or src/App.tsx
 import 'soundmind-design-system/dist/index.css';
@@ -30,10 +33,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <App />
   </React.StrictMode>
 );
-2. Use Components
-Import and use components in your React project.
+```
 
-TypeScript
+2. Use Components
+   Import and use components in your React project.
+
+```TypeScript
 
 import { Button } from 'soundmind-design-system';
 
@@ -50,32 +55,39 @@ function App() {
 }
 
 export default App;
+```
+
 🛠 Development
 If you want to contribute or modify this library locally:
 
 Clone the repository
 
-Bash
+```Bash
 
 git clone <your-repo-url>
 cd soundmind-design-system
 Install dependencies
+```
 
-Bash
+```Bash
 
 npm install
 Run Storybook (for UI development)
+```
 
-Bash
+```Bash
 
 npm run storybook
 Open http://localhost:6006 to view components.
 
 Build the library
+```
 
-Bash
+```Bash
 
 npm run build
+```
+
 📝 Features
 TypeScript: Written in TypeScript with predictable static types.
 
@@ -87,4 +99,7 @@ Storybook: Interactive documentation and testing environment.
 
 📄 License
 MIT © [Your Name or Company Name]
+
+```
+
 ```
