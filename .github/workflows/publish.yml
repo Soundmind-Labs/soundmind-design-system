@@ -1,36 +1,25 @@
-name: Publish to npm
+name: Publish Package
 
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
 
 jobs:
-  build-and-publish:
+  publish:
     runs-on: ubuntu-latest
-    # ▼ 중요: OIDC 인증을 위해 id-token 권한 필수
-    permissions:
-      contents: read
-      id-token: write
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
           registry-url: "https://registry.npmjs.org"
-          # token 설정을 지웁니다. Trusted Publishing이 알아서 합니다.
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
-      # ▼ 핵심 변경: --provenance 옵션 추가
-      # 이 옵션이 있어야 npm이 "아, 이거 Github Action에서 온 거구나" 하고 인증해줍니다.
-      # env에 NODE_AUTH_TOKEN을 넣을 필요가 없습니다.
-      - name: Publish to npm
-        run: npm publish --provenance --access public
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
+      - run: npm publish
