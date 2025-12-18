@@ -1,6 +1,5 @@
 name: Publish to npm
 
-# 트리거: Github에서 새로운 Release가 생성될 때 실행됩니다.
 on:
   release:
     types: [created]
@@ -8,33 +7,30 @@ on:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+    # ▼ 중요: OIDC 인증을 위해 id-token 권한 필수
     permissions:
       contents: read
       id-token: write
 
     steps:
-      # 1. 소스 코드 가져오기
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. Node.js 설정 (중요: registry-url 설정 필수)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+          # token 설정을 지웁니다. Trusted Publishing이 알아서 합니다.
 
-      # 3. 의존성 설치 (npm ci는 클린 설치로 CI 환경에 적합함)
       - name: Install dependencies
         run: npm ci
 
-      # 4. 라이브러리 빌드 (tsup 실행)
       - name: Build
         run: npm run build
 
-      # 5. npm 배포
-      # NODE_AUTH_TOKEN은 아래 단계에서 설정한 Secret을 자동으로 가져옵니다.
+      # ▼ 핵심 변경: --provenance 옵션 추가
+      # 이 옵션이 있어야 npm이 "아, 이거 Github Action에서 온 거구나" 하고 인증해줍니다.
+      # env에 NODE_AUTH_TOKEN을 넣을 필요가 없습니다.
       - name: Publish to npm
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --provenance --access public
