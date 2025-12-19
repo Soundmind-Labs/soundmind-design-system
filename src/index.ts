@@ -4,3 +4,4 @@ export * from "./components/Input";
 export * from "./components/Text";
 export * from "./components/Icon";
 export * from "./components/Card";
+export * from "./components/Modal";
