@@ -25,7 +25,8 @@
     "build": "tsup",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_da620e84092774e"
   },
   "keywords": [],
   "author": "hwcho",
@@ -42,6 +43,7 @@
     "@vitest/browser-playwright": "^4.0.16",
     "@vitest/coverage-v8": "^4.0.16",
     "autoprefixer": "^10.4.23",
+    "chromatic": "^13.3.4",
     "playwright": "^1.57.0",
     "postcss": "^8.5.6",
     "react": "^19.2.3",
