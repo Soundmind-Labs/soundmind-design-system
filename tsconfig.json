@@ -15,8 +15,9 @@
     "jsx": "react-jsx",
     "declaration": true, // 타입 선언 파일 생성 필수
     "declarationDir": "dist",
-    "sourceMap": true
+    "sourceMap": true,
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["src"],
+  "include": ["src", "tests"],
   "exclude": ["node_modules", "dist"]
 }
