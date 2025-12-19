@@ -83,7 +83,7 @@ describe("Accordion", () => {
         </Accordion>
       );
 
-      const trigger = screen.getByText("제목 1");
+      const trigger = screen.getByRole("button", { name: "제목 1" });
       expect(trigger).toHaveAttribute("aria-expanded", "false");
 
       fireEvent.click(trigger);
