@@ -1,6 +1,6 @@
 {
   "name": "soundmind-design-system",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/Soundmind-Labs/soundmind-design-system.git"
@@ -27,7 +27,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "npx chromatic --project-token=chpt_da620e84092774e",
-    "prepare": "husky"
+    "prepare": "husky",
+    "release": "git tag v$(node -p \"require('./package.json').version\") && git push origin v$(node -p \"require('./package.json').version\")"
   },
   "keywords": [],
   "author": "hwcho",
